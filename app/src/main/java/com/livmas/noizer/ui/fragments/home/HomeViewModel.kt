@@ -1,4 +1,4 @@
-package com.livmas.noizer.ui.home
+package com.livmas.noizer.ui.fragments.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
