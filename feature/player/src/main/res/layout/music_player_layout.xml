@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingVertical="@dimen/player_padding">
+
+    <androidx.media3.ui.DefaultTimeBar
+        android:id="@+id/exo_progress"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_gravity="center"
+
+        app:bar_height="4dp"
+        app:scrubber_disabled_size="6dp"
+        app:scrubber_dragged_size="9dp"
+        app:scrubber_enabled_size="6dp"
+
+        app:scrubber_color="?attr/colorPrimary"
+        app:played_color="?attr/colorPrimary"
+        app:unplayed_color="@color/light_grey"
+        app:buffered_color="@color/light_grey"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView android:id="@id/exo_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:includeFontPadding="false"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView android:id="@id/exo_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton android:id="@+id/exo_shuffle"
+            style="@style/ExoStyledControls.Button.Bottom.Shuffle"/>
+
+        <ImageButton android:id="@+id/exo_prev"
+            style="@style/ExoStyledControls.Button.Center.Previous"/>
+
+        <ImageButton android:id="@id/exo_play_pause"
+            style="@style/ExoMediaButton.Play"
+            app:tint="?attr/colorOnSecondary"
+            android:contentDescription="@string/play_button_description"/>
+
+        <ImageButton android:id="@+id/exo_next"
+            style="@style/ExoStyledControls.Button.Center.Next"/>
+
+        <ImageButton android:id="@+id/exo_repeat_toggle"
+            style="@style/ExoStyledControls.Button.Bottom.RepeatToggle"/>
+
+    </LinearLayout>
+</LinearLayout>
