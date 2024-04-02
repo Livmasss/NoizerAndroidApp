@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
+    // Project dependencies
+    implementation(project(":ui"))
+
     // ViewModel
     val liveDataVersion = "2.7.0"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion")

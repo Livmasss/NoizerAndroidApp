@@ -17,3 +17,4 @@ rootProject.name = "Noizer"
 include(":app")
 include(":feature:search")
 include(":feature:library")
+include(":ui")
