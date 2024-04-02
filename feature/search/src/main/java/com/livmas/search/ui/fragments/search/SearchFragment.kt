@@ -1,4 +1,4 @@
-package com.livmas.noizer.ui.fragments.library
+package com.livmas.search.ui.fragments.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,21 +7,22 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.livmas.noizer.databinding.FragmentLibraryBinding
+import com.livmas.search.databinding.FragmentSearchBinding
 
-class LibraryFragment : Fragment() {
-    private lateinit var binding: FragmentLibraryBinding
-    private val viewModel: LibraryViewModel by viewModels()
+class SearchFragment : Fragment() {
+
+    private lateinit var binding: FragmentSearchBinding
+    private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLibraryBinding.inflate(inflater, container, false)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
+        val textView: TextView = binding.text
         viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }

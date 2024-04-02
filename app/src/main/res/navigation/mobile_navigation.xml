@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.livmas.noizer.ui.fragments.search.SearchFragment"
+        android:name="com.livmas.search.ui.fragments.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_library"
-        android:name="com.livmas.noizer.ui.fragments.library.LibraryFragment"
+        android:name="com.livmas.library.ui.fragments.library.LibraryFragment"
         android:label="@string/title_library"
         tools:layout="@layout/fragment_library" />
 </navigation>

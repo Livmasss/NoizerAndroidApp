@@ -1,10 +1,10 @@
-package com.livmas.noizer.ui.fragments.library
+package com.livmas.library.ui.fragments.library
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class LibraryViewModel : ViewModel() {
+internal class LibraryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
