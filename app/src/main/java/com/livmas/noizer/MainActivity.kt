@@ -8,6 +8,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.livmas.noizer.databinding.ActivityMainBinding
+import com.livmas.noizer.ui.fragments.home.HomeFragment
+import com.livmas.player.ui.fragments.player.PlayerFragment
 
 internal class MainActivity : AppCompatActivity() {
 
@@ -31,5 +33,13 @@ internal class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        setupPlayerFragment()
+    }
+
+    private fun setupPlayerFragment() {
+        supportFragmentManager.beginTransaction()
+            .add(binding.fcvPlayer.id, PlayerFragment())
+            .commit()
     }
 }
