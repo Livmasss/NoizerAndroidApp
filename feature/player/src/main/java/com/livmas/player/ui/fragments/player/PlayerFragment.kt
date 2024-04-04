@@ -25,19 +25,23 @@ class PlayerFragment : Fragment() {
 
     @UnstableApi override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Instantiate the player.
-        player = ExoPlayer.Builder(requireContext())
-            .build()
-        binding.playerView.player = player
-
+        setupPlayer()
         // Create a HLS media source pointing to a playlist uri.
         val source = HlsMediaSource.Factory(DefaultHttpDataSource.Factory())
-            .createMediaSource(MediaItem.fromUri("https://cdn.bitmovin.com/content/assets/art-of-motion-dash-hls-progressive/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa-audio-only.m3u8"))
+            .createMediaSource(MediaItem.fromUri("http://pro13.easy4.team/segments/output.m3u8"))
 
         // Set the media item to be played.
         player.setMediaSource(source)
         // Prepare the player.
         player.prepare()
+        player.playWhenReady = true
+    }
+
+    private fun setupPlayer() {
+        // Instantiate the player.
+        player = ExoPlayer.Builder(requireContext())
+            .build()
+        binding.playerView.player = player
+
     }
 }
