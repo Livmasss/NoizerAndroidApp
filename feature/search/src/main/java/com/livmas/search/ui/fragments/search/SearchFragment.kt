@@ -28,7 +28,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupViews()
-        setupAdapter()
+//        setupAdapter()
     }
 
 //    fun setupAdapter() {

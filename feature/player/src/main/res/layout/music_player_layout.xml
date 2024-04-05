@@ -10,10 +10,13 @@
 
     <ImageButton android:id="@id/exo_play"
         style="@style/ExoMediaButton.Play"
-        app:tint="?attr/colorOnSecondary" />
+        app:tint="?attr/colorOnSecondary"
+        android:contentDescription="@string/play_button_description"/>
+
     <ImageButton android:id="@id/exo_pause"
         style="@style/ExoMediaButton.Pause"
-        app:tint="?attr/colorOnSecondary" />
+        app:tint="?attr/colorOnSecondary"
+        android:contentDescription="@string/pause_button_description"/>/>
 
     <LinearLayout
         android:layout_width="match_parent"
