@@ -33,6 +33,16 @@ android {
 }
 
 dependencies {
+    // Project dependencies
+    implementation(project(":feature:player"))
+
+    // Koin for Android
+    val koinVersion = "3.5.0"
+    implementation ("io.insert-koin:koin-android:$koinVersion")
+
+    val exoplayerVersion = "1.3.0"
+    implementation("androidx.media3:media3-exoplayer:$exoplayerVersion")
+    implementation("androidx.media3:media3-exoplayer-hls:$exoplayerVersion")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

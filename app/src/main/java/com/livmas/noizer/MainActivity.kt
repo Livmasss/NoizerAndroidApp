@@ -1,15 +1,13 @@
 package com.livmas.noizer
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.livmas.noizer.databinding.ActivityMainBinding
-import com.livmas.noizer.ui.fragments.home.HomeFragment
-import com.livmas.player.ui.fragments.player.PlayerFragment
 
 internal class MainActivity : AppCompatActivity() {
 

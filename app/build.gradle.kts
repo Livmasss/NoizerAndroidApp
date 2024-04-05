@@ -43,7 +43,12 @@ dependencies {
     implementation(project(":feature:search"))
     implementation(project(":feature:library"))
     implementation(project(":feature:player"))
+    implementation(project(":data"))
     implementation(project(":ui"))
+
+    // Koin for Android
+    val koinVersion = "3.5.0"
+    implementation ("io.insert-koin:koin-android:$koinVersion")
 
     // ViewModel
     val liveDataVersion = "2.7.0"
