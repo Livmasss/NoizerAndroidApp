@@ -12,7 +12,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.hls.HlsMediaSource
 import com.livmas.player.databinding.FragmentPlayerBinding
 
-class PlayerFragment : Fragment() {
+@UnstableApi class PlayerFragment : Fragment() {
     private lateinit var player: ExoPlayer
     private lateinit var binding: FragmentPlayerBinding
     override fun onCreateView(
@@ -23,7 +23,7 @@ class PlayerFragment : Fragment() {
         return binding.root
     }
 
-    @UnstableApi override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupPlayer()
         // Create a HLS media source pointing to a playlist uri.
@@ -42,6 +42,5 @@ class PlayerFragment : Fragment() {
         player = ExoPlayer.Builder(requireContext())
             .build()
         binding.playerView.player = player
-
     }
 }

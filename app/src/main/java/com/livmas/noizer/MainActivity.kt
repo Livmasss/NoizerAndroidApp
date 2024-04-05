@@ -33,13 +33,5 @@ internal class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        setupPlayerFragment()
-    }
-
-    private fun setupPlayerFragment() {
-        supportFragmentManager.beginTransaction()
-            .add(binding.fcvPlayer.id, PlayerFragment())
-            .commit()
     }
 }
