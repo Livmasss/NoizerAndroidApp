@@ -39,6 +39,10 @@ dependencies {
     // Project dependencies
     implementation(project(":ui"))
 
+    // Koin for Android
+    val koinVersion = "3.5.0"
+    implementation ("io.insert-koin:koin-android:$koinVersion")
+
     // ViewModel
     val liveDataVersion = "2.7.0"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion")

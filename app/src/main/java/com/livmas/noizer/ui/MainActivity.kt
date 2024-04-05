@@ -1,4 +1,4 @@
-package com.livmas.noizer
+package com.livmas.noizer.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.livmas.noizer.R
 import com.livmas.noizer.databinding.ActivityMainBinding
 
 internal class MainActivity : AppCompatActivity() {
