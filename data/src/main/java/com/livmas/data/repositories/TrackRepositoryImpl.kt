@@ -11,7 +11,7 @@ class TrackRepositoryImpl(private val source: TrackDataSource): TrackRepository 
             TrackMapper.mapTrackToDTO(it)
         }
 
-    override fun findTracks(query: String): List<TrackDTO> {
+    override fun searchTracks(query: String): List<TrackDTO> {
         TODO("Not yet implemented")
     }
 }

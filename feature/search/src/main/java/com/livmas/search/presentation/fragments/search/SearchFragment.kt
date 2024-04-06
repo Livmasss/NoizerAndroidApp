@@ -1,4 +1,4 @@
-package com.livmas.search.ui.fragments.search
+package com.livmas.search.presentation.fragments.search
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,13 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.livmas.search.databinding.FragmentSearchBinding
+import com.livmas.search.presentation.adapters.SearchAdapter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
     private val viewModel: SearchViewModel by activityViewModel<SearchViewModel>()
+    private lateinit var adapter: SearchAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,17 +31,25 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupViews()
-//        setupAdapter()
+        setupObservers()
+        initiateData()
     }
 
-//    fun setupAdapter() {
-//
-//    }
+    private fun initiateData() =
+        viewModel.initiateTracks()
 
     private fun setupViews() {
         setupSearchBarView()
+        setupSearchRecyclerView()
     }
 
+    private fun setupSearchRecyclerView() {
+        adapter = SearchAdapter(
+            listOf()
+        )
+        binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvSearchResult.adapter = adapter
+    }
     private fun setupSearchBarView() {
         binding.etSearchBar.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -53,5 +64,15 @@ class SearchFragment : Fragment() {
                 return
             }
         })
+    }
+
+    private fun setupObservers() {
+        setupSearchResultObserver()
+    }
+    private fun setupSearchResultObserver() {
+        viewModel.searchResult.observe(viewLifecycleOwner) {
+            adapter.updateContent(it)
+            adapter.notifyDataSetChanged()
+        }
     }
 }
