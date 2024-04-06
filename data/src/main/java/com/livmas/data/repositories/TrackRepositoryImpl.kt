@@ -5,7 +5,7 @@ import com.livmas.data.mappers.TrackMapper
 import com.livmas.search.domain.models.TrackDTO
 import com.livmas.search.domain.repositories.TrackRepository
 
-class TrackRepositoryImpl(private val source: TrackDataSource): TrackRepository {
+internal class TrackRepositoryImpl(private val source: TrackDataSource): TrackRepository {
     override fun getTracks(): List<TrackDTO> =
         source.getTracks().map {
             TrackMapper.mapTrackToDTO(it)

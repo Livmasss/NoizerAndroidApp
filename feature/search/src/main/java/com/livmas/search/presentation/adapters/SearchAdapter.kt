@@ -1,16 +1,28 @@
 package com.livmas.search.presentation.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.livmas.search.presentation.models.TrackModel
+import com.bumptech.glide.Glide
 import com.livmas.ui.databinding.TrackItemLayoutBinding
 
-internal class SearchAdapter(var data: List<TrackModel>): RecyclerView.Adapter<SearchAdapter.SearchHolder>() {
+internal class SearchAdapter(private val context: Context, var data: List<TrackModel>): RecyclerView.Adapter<SearchAdapter.SearchHolder>() {
+    data class TrackModel (
+        val id: Long,
+        val title: String,
+        val author: String,
+        val coverUrl: String
+    )
+
     inner class SearchHolder(private val binding: TrackItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(model: TrackModel) {
+        fun bind(context: Context, model: TrackModel) {
             binding.tvTrackAuthor.text = model.author
             binding.tvTrackTitle.text = model.title
+
+            Glide.with(context)
+                .load(model.coverUrl)
+                .into(binding.ivTrackCover)
         }
     }
 
@@ -26,7 +38,7 @@ internal class SearchAdapter(var data: List<TrackModel>): RecyclerView.Adapter<S
     }
 
     override fun onBindViewHolder(holder: SearchHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(context, data[position])
     }
 
     fun updateContent(list: List<TrackModel>) {

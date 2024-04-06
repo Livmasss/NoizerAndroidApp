@@ -45,6 +45,7 @@ class SearchFragment : Fragment() {
 
     private fun setupSearchRecyclerView() {
         adapter = SearchAdapter(
+            requireContext(),
             listOf()
         )
         binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())

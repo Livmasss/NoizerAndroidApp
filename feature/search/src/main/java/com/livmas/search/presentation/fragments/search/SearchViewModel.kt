@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.livmas.search.domain.usecases.GetInitialTracksUseCase
 import com.livmas.search.domain.usecases.SearchTracksUseCase
+import com.livmas.search.presentation.adapters.SearchAdapter
 import com.livmas.search.presentation.mappers.TrackModelMapper
-import com.livmas.search.presentation.models.TrackModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,9 +20,9 @@ internal class SearchViewModel(
         MutableLiveData()
     }
 
-    val searchResult: LiveData<List<TrackModel>>
+    val searchResult: LiveData<List<SearchAdapter.TrackModel>>
         get() = _searchResult
-    private val _searchResult: MutableLiveData<List<TrackModel>> by lazy {
+    private val _searchResult: MutableLiveData<List<SearchAdapter.TrackModel>> by lazy {
         MutableLiveData(listOf())
     }
 
