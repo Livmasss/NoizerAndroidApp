@@ -48,6 +48,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$liveDataVersion")
 
+    // Glide for image loading from url
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+
     // Fragment and navigation
     val fragmentVersion = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$fragmentVersion")
