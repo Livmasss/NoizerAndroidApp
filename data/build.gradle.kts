@@ -36,6 +36,8 @@ dependencies {
     // Project dependencies
     implementation(project(":feature:player"))
     implementation(project(":feature:search"))
+    implementation(project(":util"))
+
 
     // Koin for Android
     val koinVersion = "3.5.0"

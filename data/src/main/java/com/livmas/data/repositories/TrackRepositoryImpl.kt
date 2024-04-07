@@ -2,8 +2,8 @@ package com.livmas.data.repositories
 
 import com.livmas.data.datasources.TrackDataSource
 import com.livmas.data.mappers.TrackMapper
-import com.livmas.search.domain.models.TrackDTO
 import com.livmas.search.domain.repositories.TrackRepository
+import com.livmas.util.domain.models.TrackDTO
 
 internal class TrackRepositoryImpl(private val source: TrackDataSource): TrackRepository {
     override fun getTracks(): List<TrackDTO> =

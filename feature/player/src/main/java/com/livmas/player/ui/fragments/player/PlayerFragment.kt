@@ -1,20 +1,18 @@
 package com.livmas.player.ui.fragments.player
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.media3.common.util.UnstableApi
+import com.bumptech.glide.Glide
 import com.livmas.player.databinding.FragmentPlayerBinding
-import com.livmas.player.domain.MusicPlayer
-import org.koin.android.ext.android.inject
+import com.livmas.player.ui.models.TrackModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @UnstableApi
 class PlayerFragment : Fragment() {
-    private val player: MusicPlayer by inject()
     private lateinit var binding: FragmentPlayerBinding
     private val viewModel by viewModel<PlayerViewModel>()
 
@@ -30,21 +28,29 @@ class PlayerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupPlayerView()
+        setupObservers()
         playFonk()
-        checkChildren()
     }
 
     private fun setupPlayerView() {
-        binding.playerView.player = player.exoPlayer
+        viewModel.setupPlayerForView(binding.playerView)
     }
     private fun playFonk() {
         // Create a HLS media source pointing to a playlist uri.
-        val item = viewModel.getSongByUri("http://pro13.easy4.team/segments/output.m3u8")
-        player.playItemTracks(listOf(item))
+        viewModel.playTrack(TrackModel("Лютый фонк", "Бетховен", "https://t2.genius.com/unsafe/504x504/https%3A%2F%2Fimages.genius.com%2Fe4833b496aab74f8f208e91bde50dbd5.1000x1000x1.png", "http://pro13.easy4.team/segments/output.m3u8"))
     }
 
-    private fun checkChildren() {
-        val b = binding.playerView.findViewById<View>(androidx.media3.ui.R.id.exo_play_pause)
-        Log.d("child_test", b.id.toString())
+    private fun setupObservers() {
+        setupPlayedTrackObserver()
+    }
+
+    private fun setupPlayedTrackObserver() {
+        viewModel.playedTrack.observe(viewLifecycleOwner) {
+            binding.tvTrackTitle.text = it.title
+            binding.tvTrackAuthor.text = it.author
+            Glide.with(requireContext())
+                .load(it.coverUrl)
+                .into(binding.ivTrackCover)
+        }
     }
 }

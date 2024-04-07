@@ -1,4 +1,4 @@
-package com.livmas.search.domain.models
+package com.livmas.util.domain.models
 
 data class TrackDTO (
     val id: Long,

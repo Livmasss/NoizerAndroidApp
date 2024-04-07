@@ -5,35 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
-    android:paddingVertical="@dimen/player_padding"
-    android:paddingEnd="@dimen/player_padding"
-    android:background="@color/black">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tvTrackTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/tvTrackAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <ToggleButton
-            android:background="@drawable/ic_like"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            style="@style/LikeToggleButton" />
-    </LinearLayout>
+    android:paddingVertical="@dimen/player_padding">
 
     <androidx.media3.ui.DefaultTimeBar
         android:id="@+id/exo_progress"

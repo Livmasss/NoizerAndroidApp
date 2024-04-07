@@ -16,5 +16,5 @@ val playerModule = module {
         MusicPlayer(get())
     }
     single { GetMediaItemUseCase(get()) }
-    viewModel{ PlayerViewModel(get()) }
+    viewModel{ PlayerViewModel(get(), get()) }
 }

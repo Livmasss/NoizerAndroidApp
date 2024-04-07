@@ -38,11 +38,16 @@ android {
 dependencies {
     // Project dependencies
     implementation(project(":ui"))
+    implementation(project(":util"))
 
     // Koin for Android
     val koinVersion = "3.5.0"
     implementation ("io.insert-koin:koin-android:$koinVersion")
 
+    // Glide for image loading from url
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+
+    // Exoplayer
     val exoplayerVersion = "1.3.0"
     implementation("androidx.media3:media3-exoplayer:$exoplayerVersion")
     implementation("androidx.media3:media3-exoplayer-hls:$exoplayerVersion")
