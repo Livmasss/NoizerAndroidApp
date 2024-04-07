@@ -1,5 +1,6 @@
-package com.livmas.player
+@file:UnstableApi package com.livmas.player
 
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import com.livmas.player.domain.MusicPlayer
 import com.livmas.player.domain.usecases.GetMediaItemUseCase

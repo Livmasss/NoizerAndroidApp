@@ -1,4 +1,4 @@
-package com.livmas.noizer.ui
+package com.livmas.noizer.presentation
 
 import android.app.Application
 import com.livmas.noizer.setupKoin
