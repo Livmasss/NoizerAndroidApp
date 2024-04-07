@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.player.PlayerFragment"
-    android:background="?attr/colorOnPrimary">
+    tools:context=".ui.fragments.player.PlayerFragment">
 
-    <androidx.media3.ui.LegacyPlayerControlView
+    <androidx.media3.ui.PlayerControlView
         android:id="@+id/playerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:show_buffering="when_playing"
         app:show_shuffle_button="true"
+        app:repeat_toggle_modes="all"
         app:controller_layout_id="@layout/music_player_layout"
-        app:show_timeout="0"/>
+        app:show_timeout="0"
+        android:background="?attr/colorOnPrimary"/>
 
 </FrameLayout>

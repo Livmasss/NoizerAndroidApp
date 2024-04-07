@@ -1,6 +1,7 @@
 package com.livmas.player.ui.fragments.player
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,7 @@ class PlayerFragment : Fragment() {
 
         setupPlayerView()
         playFonk()
+        checkChildren()
     }
 
     private fun setupPlayerView() {
@@ -39,5 +41,10 @@ class PlayerFragment : Fragment() {
         // Create a HLS media source pointing to a playlist uri.
         val item = viewModel.getSongByUri("http://pro13.easy4.team/segments/output.m3u8")
         player.playItemTracks(listOf(item))
+    }
+
+    private fun checkChildren() {
+        val b = binding.playerView.findViewById<View>(androidx.media3.ui.R.id.exo_play_pause)
+        Log.d("child_test", b.id.toString())
     }
 }

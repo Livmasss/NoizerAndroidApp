@@ -8,4 +8,9 @@
     <style name="CommonFragmentStyle">
         <item name="android:padding">10dp</item>
     </style>
+
+    <style name="LikeToggleButton">
+        <item name="android:textOn">@null</item>
+        <item name="android:textOff">@null</item>
+    </style>
 </resources>

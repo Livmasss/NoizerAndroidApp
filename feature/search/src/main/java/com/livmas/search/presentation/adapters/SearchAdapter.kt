@@ -16,13 +16,13 @@ internal class SearchAdapter(private val context: Context, var data: List<TrackM
     )
 
     inner class SearchHolder(private val binding: TrackItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(context: Context, model: TrackModel) {
-            binding.tvTrackAuthor.text = model.author
-            binding.tvTrackTitle.text = model.title
+        fun bind(context: Context, model: TrackModel) = binding.apply {
+            tvTrackAuthor.text = model.author
+            tvTrackTitle.text = model.title
 
             Glide.with(context)
                 .load(model.coverUrl)
-                .into(binding.ivTrackCover)
+                .into(ivTrackCover)
         }
     }
 
