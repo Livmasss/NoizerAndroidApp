@@ -11,6 +11,8 @@ import com.livmas.player.domain.usecases.GetMediaItemUseCase
 import com.livmas.player.ui.models.TrackModel
 import com.livmas.util.domain.models.TrackDTO
 import com.livmas.util.domain.usecases.GetTrackURLUseCase
+import com.livmas.util.domain.usecases.LikeTrackUseCase
+import com.livmas.util.domain.usecases.UnlikeTrackUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,23 +21,37 @@ import kotlinx.coroutines.launch
 internal class PlayerViewModel(
     private val getMediaItemUseCase: GetMediaItemUseCase,
     private val getTrackURLUseCase: GetTrackURLUseCase,
+    private val likeTrackUseCase: LikeTrackUseCase,
+    private val unlikeTrackUseCase: UnlikeTrackUseCase,
     private val player: MusicPlayer
 ): ViewModel() {
 
-    private val _playedTrack: MutableLiveData<TrackDTO> by lazy {
+    private val _playedTrack: MutableLiveData<TrackModel> by lazy {
         MutableLiveData()
     }
-    val playedTrack: LiveData<TrackDTO>
+    val playedTrack: LiveData<TrackModel>
         get() = _playedTrack
 
     fun setupPlayerForView(view: PlayerControlView) {
         view.player = player.exoPlayer
     }
+
     private fun getSongByUri(uri: String): MediaItem {
         return getMediaItemUseCase.execute(uri)
     }
 
-    fun playTrack(track: TrackDTO) {
+    fun changePlayedTrackLikedState() {
+        playedTrack.value?.let { track ->
+            track.likedState = !track.likedState
+
+            if (track.likedState)
+                likeTrackUseCase.execute(track.id)
+            else
+                unlikeTrackUseCase.execute(track.id)
+        }
+    }
+
+    fun playTrack(track: TrackModel) {
         CoroutineScope(Dispatchers.IO).launch {
             _playedTrack.postValue(track)
             val trackUrl = getTrackURLUseCase.execute(track.id)

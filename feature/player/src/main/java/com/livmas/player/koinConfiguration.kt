@@ -6,6 +6,8 @@ import com.livmas.player.domain.MusicPlayer
 import com.livmas.player.domain.usecases.GetMediaItemUseCase
 import com.livmas.player.ui.fragments.player.PlayerViewModel
 import com.livmas.util.domain.usecases.GetTrackURLUseCase
+import com.livmas.util.domain.usecases.LikeTrackUseCase
+import com.livmas.util.domain.usecases.UnlikeTrackUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -18,5 +20,7 @@ val playerModule = module {
     }
     single { GetMediaItemUseCase(get()) }
     single { GetTrackURLUseCase(get()) }
-    viewModel{ PlayerViewModel(get(), get(), get()) }
+    single { LikeTrackUseCase(get()) }
+    single { UnlikeTrackUseCase(get()) }
+    viewModel{ PlayerViewModel(get(), get(), get(), get(), get()) }
 }

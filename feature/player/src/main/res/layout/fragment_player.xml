@@ -45,6 +45,7 @@
             android:padding="5dp">
 
             <ToggleButton
+                android:id="@+id/tbLike"
                 android:background="@drawable/ic_like"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

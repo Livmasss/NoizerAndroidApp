@@ -1,7 +1,7 @@
 package com.livmas.data
 
-import com.livmas.data.datasources.TrackContentDataSource
-import com.livmas.data.datasources.TrackInfoDataSource
+import com.livmas.data.datasources.RemoteTrackContentDataSource
+import com.livmas.data.datasources.RemoteTrackInfoDataSource
 import com.livmas.data.repositories.MediaRepositoryImpl
 import com.livmas.data.repositories.TrackRepositoryImpl
 import com.livmas.player.domain.repositories.MediaRepository
@@ -10,10 +10,10 @@ import org.koin.dsl.module
 
 val dataModule = module {
     single {
-        TrackInfoDataSource()
+        RemoteTrackInfoDataSource()
     }
     single {
-        TrackContentDataSource()
+        RemoteTrackContentDataSource()
     }
 
     single<MediaRepository> {

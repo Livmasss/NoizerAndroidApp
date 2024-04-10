@@ -6,4 +6,5 @@ interface TrackRepository {
     fun getTracks(): List<TrackDTO>
     fun searchTracks(query: String): List<TrackDTO>
     fun getTrackURLById(id: Long): String
+    fun setIsTrackLiked(trackId: Long, likedState: Boolean)
 }

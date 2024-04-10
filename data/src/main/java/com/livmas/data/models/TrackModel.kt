@@ -4,5 +4,6 @@ internal data class TrackModel (
     val id: Long,
     val title: String,
     val author: String,
-    val coverUrl: String
+    val coverUrl: String,
+    val likedState: Boolean
 )
