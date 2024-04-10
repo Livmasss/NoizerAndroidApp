@@ -2,7 +2,7 @@ package com.livmas.data.datasources
 
 import com.livmas.data.models.TrackModel
 
-internal class TrackDataSource {
+internal class TrackInfoDataSource {
     fun getTracks(): List<TrackModel> {
         return listOf(
             TrackModel(
