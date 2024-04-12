@@ -1,10 +1,14 @@
 @file:UnstableApi package com.livmas.player
 
+import android.content.ComponentName
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
-import com.livmas.player.domain.MusicPlayer
+import androidx.media3.session.MediaController
+import androidx.media3.session.SessionToken
+import com.google.common.util.concurrent.ListenableFuture
 import com.livmas.player.domain.usecases.GetMediaItemUseCase
 import com.livmas.player.presentation.fragments.player.PlayerViewModel
+import com.livmas.player.presentation.services.MusicPlaybackService
 import com.livmas.util.domain.usecases.GetTrackURLUseCase
 import com.livmas.util.domain.usecases.LikeTrackUseCase
 import com.livmas.util.domain.usecases.UnlikeTrackUseCase
@@ -15,9 +19,17 @@ val playerModule = module {
     single<ExoPlayer> {
         ExoPlayer.Builder(get()).build()
     }
-    single<MusicPlayer> {
-        MusicPlayer(get(), get())
+//    single<MusicPlayer> {
+//        MusicPlayer(get(), get())
+//    }
+
+    single {
+        SessionToken(get(), ComponentName(get(), MusicPlaybackService::class.java))
     }
+    single<ListenableFuture<MediaController>> {
+        MediaController.Builder(get(), get()).buildAsync()
+    }
+
     single { GetMediaItemUseCase(get()) }
     single { GetTrackURLUseCase(get()) }
     single { LikeTrackUseCase(get()) }

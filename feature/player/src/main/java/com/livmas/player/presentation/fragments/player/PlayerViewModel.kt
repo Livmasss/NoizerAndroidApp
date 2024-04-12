@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.session.MediaController
 import androidx.media3.ui.PlayerControlView
-import com.livmas.player.domain.MusicPlayer
+import com.google.common.util.concurrent.ListenableFuture
+import com.google.common.util.concurrent.MoreExecutors
 import com.livmas.player.domain.usecases.GetMediaItemUseCase
 import com.livmas.player.presentation.models.TrackModel
 import com.livmas.util.domain.usecases.GetTrackURLUseCase
@@ -22,7 +24,7 @@ internal class PlayerViewModel(
     private val getTrackURLUseCase: GetTrackURLUseCase,
     private val likeTrackUseCase: LikeTrackUseCase,
     private val unlikeTrackUseCase: UnlikeTrackUseCase,
-    private val player: MusicPlayer
+    private val controllerFuture: ListenableFuture<MediaController>
 ): ViewModel() {
 
     private val _playedTrack: MutableLiveData<TrackModel> by lazy {
@@ -32,11 +34,11 @@ internal class PlayerViewModel(
         get() = _playedTrack
 
     fun setupPlayerForView(view: PlayerControlView) {
-        view.player = player.exoPlayer
-    }
-
-    private fun getSongByUri(uri: String): MediaItem {
-        return getMediaItemUseCase.execute(uri)
+        controllerFuture.addListener({
+            view.player = controllerFuture.get()
+        },
+            MoreExecutors.directExecutor()
+        )
     }
 
     fun changePlayedTrackLikedState() {
@@ -51,13 +53,21 @@ internal class PlayerViewModel(
     }
 
     fun playTrack(track: TrackModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            _playedTrack.postValue(track)
-            val trackUrl = getTrackURLUseCase.execute(track.id)
+        controllerFuture.addListener(
+            {
+                _playedTrack.postValue(track)
 
-            CoroutineScope(Dispatchers.Main).launch {
-                player.playItemTracks(listOf(getSongByUri(trackUrl)))
-            }
-        }
+                CoroutineScope(Dispatchers.IO).launch {
+                    val url = getTrackURLUseCase.execute(track.id)
+                    val item = getMediaItemUseCase.execute(url)
+                    CoroutineScope(Dispatchers.Main).launch {
+                        controllerFuture.get().setMediaItem(item)
+                        controllerFuture.get().prepare()
+                        controllerFuture.get().playWhenReady = true
+                    }
+                }
+            },
+            MoreExecutors.directExecutor()
+        )
     }
 }
