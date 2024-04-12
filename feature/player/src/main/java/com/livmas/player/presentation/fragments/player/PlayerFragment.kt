@@ -1,4 +1,4 @@
-package com.livmas.player.ui.fragments.player
+package com.livmas.player.presentation.fragments.player
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.media3.common.util.UnstableApi
 import com.bumptech.glide.Glide
 import com.livmas.player.databinding.FragmentPlayerBinding
-import com.livmas.player.ui.models.TrackModel
-import com.livmas.util.domain.models.TrackDTO
+import com.livmas.player.presentation.models.TrackModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @UnstableApi

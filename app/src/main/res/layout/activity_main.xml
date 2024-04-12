@@ -22,7 +22,7 @@
         android:id="@+id/fcvPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.livmas.player.ui.fragments.player.PlayerFragment" />
+        android:name="com.livmas.player.presentation.fragments.player.PlayerFragment" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

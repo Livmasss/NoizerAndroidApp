@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.player.PlayerFragment"
+    tools:context=".presentation.fragments.player.PlayerFragment"
     android:orientation="vertical"
     android:background="?attr/colorOnPrimary"
     android:padding="8dp">

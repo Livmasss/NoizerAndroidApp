@@ -1,4 +1,4 @@
-package com.livmas.player.ui.fragments.player
+package com.livmas.player.presentation.fragments.player
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,8 +8,7 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.PlayerControlView
 import com.livmas.player.domain.MusicPlayer
 import com.livmas.player.domain.usecases.GetMediaItemUseCase
-import com.livmas.player.ui.models.TrackModel
-import com.livmas.util.domain.models.TrackDTO
+import com.livmas.player.presentation.models.TrackModel
 import com.livmas.util.domain.usecases.GetTrackURLUseCase
 import com.livmas.util.domain.usecases.LikeTrackUseCase
 import com.livmas.util.domain.usecases.UnlikeTrackUseCase

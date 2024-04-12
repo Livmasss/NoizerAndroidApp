@@ -4,7 +4,7 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import com.livmas.player.domain.MusicPlayer
 import com.livmas.player.domain.usecases.GetMediaItemUseCase
-import com.livmas.player.ui.fragments.player.PlayerViewModel
+import com.livmas.player.presentation.fragments.player.PlayerViewModel
 import com.livmas.util.domain.usecases.GetTrackURLUseCase
 import com.livmas.util.domain.usecases.LikeTrackUseCase
 import com.livmas.util.domain.usecases.UnlikeTrackUseCase
