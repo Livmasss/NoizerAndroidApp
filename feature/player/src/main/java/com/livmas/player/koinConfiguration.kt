@@ -16,7 +16,7 @@ val playerModule = module {
         ExoPlayer.Builder(get()).build()
     }
     single<MusicPlayer> {
-        MusicPlayer(get())
+        MusicPlayer(get(), get())
     }
     single { GetMediaItemUseCase(get()) }
     single { GetTrackURLUseCase(get()) }

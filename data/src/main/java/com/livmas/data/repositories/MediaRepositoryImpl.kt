@@ -1,10 +1,14 @@
 package com.livmas.data.repositories
 
+import android.content.Context
 import androidx.media3.common.MediaItem
+import androidx.media3.common.util.UnstableApi
 import com.livmas.player.domain.repositories.MediaRepository
 
-internal class MediaRepositoryImpl: MediaRepository {
+@UnstableApi
+internal class MediaRepositoryImpl(override val context: Context) : MediaRepository {
     override fun getMediaItemByURI(uri: String): MediaItem {
-        return MediaItem.fromUri(uri)
+        val item = MediaItem.fromUri(uri)
+        return item
     }
 }

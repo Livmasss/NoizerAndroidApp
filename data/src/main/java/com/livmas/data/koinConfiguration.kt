@@ -1,5 +1,6 @@
-package com.livmas.data
+@file:UnstableApi package com.livmas.data
 
+import androidx.media3.common.util.UnstableApi
 import com.livmas.data.datasources.RemoteTrackContentDataSource
 import com.livmas.data.datasources.RemoteTrackInfoDataSource
 import com.livmas.data.repositories.MediaRepositoryImpl
@@ -17,7 +18,7 @@ val dataModule = module {
     }
 
     single<MediaRepository> {
-        MediaRepositoryImpl()
+        MediaRepositoryImpl(get())
     }
     single<TrackRepository> {
         TrackRepositoryImpl(get(), get())
