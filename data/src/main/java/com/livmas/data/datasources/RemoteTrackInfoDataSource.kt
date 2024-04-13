@@ -25,6 +25,13 @@ internal class RemoteTrackInfoDataSource {
                 "Instasamka",
                 "https://t2.genius.com/unsafe/504x504/https%3A%2F%2Fimages.genius.com%2F0fcdc3a7595c08c0a3931f12ac2165ec.873x873x1.jpg",
                 false
+            ),
+            TrackModel(
+                3,
+                "Лютый фонк",
+                "Бетховен",
+                "https://t2.genius.com/unsafe/504x504/https%3A%2F%2Fimages.genius.com%2Fe4833b496aab74f8f208e91bde50dbd5.1000x1000x1.png",
+                false
             )
         )
     }

@@ -10,13 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.livmas.search.databinding.FragmentSearchBinding
 import com.livmas.search.presentation.adapters.SearchAdapter
+import com.livmas.ui.presentation.SharedViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
-    private val viewModel: SearchViewModel by activityViewModel<SearchViewModel>()
     private lateinit var adapter: SearchAdapter
+
+    private val viewModel: SearchViewModel by viewModel<SearchViewModel>()
+    private val sharedViewModel by activityViewModel<SharedViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,8 +50,11 @@ class SearchFragment : Fragment() {
     private fun setupSearchRecyclerView() {
         adapter = SearchAdapter(
             requireContext(),
-            listOf()
-        )
+            listOf(),
+        ) {
+            sharedViewModel.trackToPlay.postValue(it)
+        }
+
         binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())
         binding.rvSearchResult.adapter = adapter
     }

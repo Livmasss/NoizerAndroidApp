@@ -8,13 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.media3.common.util.UnstableApi
 import com.bumptech.glide.Glide
 import com.livmas.player.databinding.FragmentPlayerBinding
-import com.livmas.player.presentation.models.TrackModel
+import com.livmas.ui.presentation.SharedViewModel
+import com.livmas.ui.presentation.mappers.TrackModelMapper
+import com.livmas.ui.presentation.models.TrackModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @UnstableApi
 class PlayerFragment : Fragment() {
     private lateinit var binding: FragmentPlayerBinding
     private val viewModel by viewModel<PlayerViewModel>()
+    private val sharedViewModel by activityViewModel<SharedViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +60,7 @@ class PlayerFragment : Fragment() {
 
     private fun setupObservers() {
         setupPlayedTrackObserver()
+        setupTrackToPlayObserver()
     }
 
     private fun setupPlayedTrackObserver() {
@@ -66,6 +71,14 @@ class PlayerFragment : Fragment() {
                 .load(it.coverUrl)
                 .into(binding.ivTrackCover)
             binding.tbLike.isChecked = it.likedState
+        }
+    }
+
+    private fun setupTrackToPlayObserver() {
+        sharedViewModel.trackToPlay.observe(viewLifecycleOwner) { dto ->
+            dto?.let {
+                viewModel.playTrack(TrackModelMapper.fromDTO(dto))
+            }
         }
     }
 }

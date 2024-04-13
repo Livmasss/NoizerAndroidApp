@@ -1,4 +1,4 @@
-package com.livmas.player.presentation.models
+package com.livmas.ui.presentation.models
 
 data class TrackModel (
     val id: Long,

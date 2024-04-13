@@ -8,7 +8,7 @@ import androidx.media3.ui.PlayerControlView
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.MoreExecutors
 import com.livmas.player.domain.usecases.GetMediaItemBuilderUseCase
-import com.livmas.player.presentation.models.TrackModel
+import com.livmas.ui.presentation.models.TrackModel
 import com.livmas.util.domain.usecases.GetTrackURLUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

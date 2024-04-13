@@ -6,17 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.PlayerControlView
 import com.livmas.player.domain.MusicPlayer
-import com.livmas.player.presentation.models.TrackModel
+import com.livmas.ui.presentation.models.TrackModel
+import com.livmas.ui.presentation.SharedViewModel
 import com.livmas.util.domain.usecases.LikeTrackUseCase
 import com.livmas.util.domain.usecases.UnlikeTrackUseCase
 
 @UnstableApi
 internal class PlayerViewModel(
+    private val player: MusicPlayer,
     private val likeTrackUseCase: LikeTrackUseCase,
-    private val unlikeTrackUseCase: UnlikeTrackUseCase,
-    private val player: MusicPlayer
+    private val unlikeTrackUseCase: UnlikeTrackUseCase
 ): ViewModel() {
-
     private val _playedTrack: MutableLiveData<TrackModel> by lazy {
         MutableLiveData()
     }
