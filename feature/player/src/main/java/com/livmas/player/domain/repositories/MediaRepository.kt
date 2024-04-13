@@ -5,5 +5,5 @@ import androidx.media3.common.MediaItem
 
 interface MediaRepository {
     val context: Context
-    fun getMediaItemByURI(uri: String): MediaItem
+    fun getMediaItemBuilderByURI(uri: String): MediaItem.Builder
 }

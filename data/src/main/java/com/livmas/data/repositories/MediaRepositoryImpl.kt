@@ -7,8 +7,6 @@ import com.livmas.player.domain.repositories.MediaRepository
 
 @UnstableApi
 internal class MediaRepositoryImpl(override val context: Context) : MediaRepository {
-    override fun getMediaItemByURI(uri: String): MediaItem {
-        val item = MediaItem.fromUri(uri)
-        return item
-    }
+    override fun getMediaItemBuilderByURI(uri: String): MediaItem.Builder =
+        MediaItem.Builder().setUri(uri)
 }
