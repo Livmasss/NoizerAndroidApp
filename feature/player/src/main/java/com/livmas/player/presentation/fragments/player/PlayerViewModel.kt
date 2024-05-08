@@ -7,7 +7,6 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.PlayerControlView
 import com.livmas.player.domain.MusicPlayer
 import com.livmas.ui.presentation.models.TrackModel
-import com.livmas.ui.presentation.SharedViewModel
 import com.livmas.util.domain.usecases.LikeTrackUseCase
 import com.livmas.util.domain.usecases.UnlikeTrackUseCase
 

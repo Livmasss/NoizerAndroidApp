@@ -26,7 +26,7 @@ internal class SearchViewModel(
         MutableLiveData(listOf())
     }
 
-    fun searchTracks() {
+    fun findTracks() {
         CoroutineScope(Dispatchers.IO).launch {
             val data = searchTracksUseCase.execute(searchQuery.value.orEmpty()).map {
                 TrackModelMapper.fromDTO(it)

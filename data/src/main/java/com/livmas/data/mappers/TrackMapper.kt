@@ -10,7 +10,7 @@ internal class TrackMapper {
             track.title,
             track.author,
             track.coverUrl,
-            track.likedState
+            false
         )
     }
 }

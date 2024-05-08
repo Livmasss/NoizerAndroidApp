@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         app:show_buffering="when_playing"
         app:show_shuffle_button="true"
-        app:repeat_toggle_modes="all"
+        app:repeat_toggle_modes="one|all"
         app:controller_layout_id="@layout/music_player_layout"
         app:show_timeout="0"
         android:background="?attr/colorOnPrimary"/>

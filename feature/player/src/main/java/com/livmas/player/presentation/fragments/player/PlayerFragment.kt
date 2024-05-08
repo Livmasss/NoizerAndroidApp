@@ -33,7 +33,7 @@ class PlayerFragment : Fragment() {
 
         setupViews()
         setupObservers()
-        playPhonk()
+//        playPhonk()
     }
 
     private fun setupViews() {
@@ -47,15 +47,6 @@ class PlayerFragment : Fragment() {
         binding.tbLike.setOnClickListener {
             viewModel.changePlayedTrackLikedState()
         }
-    }
-
-    private fun playPhonk() {
-        // Create a HLS media source pointing to a playlist uri.
-        viewModel.playTrack(
-            TrackModel(0, "Лютый фонк", "Бетховен",
-                "https://t2.genius.com/unsafe/504x504/https%3A%2F%2Fimages.genius.com%2Fe4833b496aab74f8f208e91bde50dbd5.1000x1000x1.png",
-                false)
-        )
     }
 
     private fun setupObservers() {

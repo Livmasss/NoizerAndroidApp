@@ -43,7 +43,14 @@ dependencies {
     val koinVersion = "3.5.0"
     implementation ("io.insert-koin:koin-android:$koinVersion")
 
-    val exoplayerVersion = "1.3.0"
+    // HTTP connection
+    val retrofitVersion = "2.9.0"
+    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // Hls player
+    val exoplayerVersion = "1.3.1"
     implementation("androidx.media3:media3-exoplayer:$exoplayerVersion")
     implementation("androidx.media3:media3-exoplayer-hls:$exoplayerVersion")
 
