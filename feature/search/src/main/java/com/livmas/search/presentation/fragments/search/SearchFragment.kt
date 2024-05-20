@@ -53,6 +53,7 @@ class SearchFragment : Fragment() {
             listOf(),
         ) {
             sharedViewModel.trackToPlay.postValue(it)
+            sharedViewModel.isPlayerVisible.postValue(true)
         }
 
         binding.rvSearchResult.layoutManager = LinearLayoutManager(requireContext())

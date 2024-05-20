@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.livmas.player.databinding.FragmentPlayerBinding
 import com.livmas.ui.presentation.SharedViewModel
 import com.livmas.ui.presentation.mappers.TrackModelMapper
-import com.livmas.ui.presentation.models.TrackModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,7 +32,6 @@ class PlayerFragment : Fragment() {
 
         setupViews()
         setupObservers()
-//        playPhonk()
     }
 
     private fun setupViews() {
