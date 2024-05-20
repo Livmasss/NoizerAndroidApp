@@ -66,7 +66,7 @@ class SearchFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.searchQuery.postValue(p0.toString())
+                viewModel.findTracks(p0.toString())
             }
 
             override fun afterTextChanged(p0: Editable?) {

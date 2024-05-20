@@ -16,19 +16,15 @@ internal class SearchViewModel(
     private val getInitialTracksUseCase: GetInitialTracksUseCase
 ) : ViewModel() {
 
-    val searchQuery: MutableLiveData<String> by lazy {
-        MutableLiveData()
-    }
-
     val searchResult: LiveData<List<TrackModel>>
         get() = _searchResult
     private val _searchResult: MutableLiveData<List<TrackModel>> by lazy {
         MutableLiveData(listOf())
     }
 
-    fun findTracks() {
+    fun findTracks(searchQuery: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val data = searchTracksUseCase.execute(searchQuery.value.orEmpty()).map {
+            val data = searchTracksUseCase.execute(searchQuery).map {
                 TrackModelMapper.fromDTO(it)
             }
             _searchResult.postValue(data)

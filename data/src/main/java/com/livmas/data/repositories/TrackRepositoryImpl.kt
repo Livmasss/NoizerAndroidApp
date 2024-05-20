@@ -16,9 +16,10 @@ internal class TrackRepositoryImpl(
             TrackMapper.mapTrackToDTO(it)
         }
 
-    override fun searchTracks(query: String): List<TrackDTO> {
-        TODO("Not yet implemented")
-    }
+    override fun searchTracks(query: String): List<TrackDTO> =
+        remoteTrackInfoSource.findTracks(query).map {
+            TrackMapper.mapTrackToDTO(it)
+        }
 
     override fun getTrackURLById(id: Long): String {
         return remoteTrackContentSource.getTrackURLById(id)

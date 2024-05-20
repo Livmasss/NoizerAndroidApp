@@ -22,7 +22,6 @@ internal class MainActivity : AppCompatActivity() {
 
         setupNavController()
 
-//        setupViews()
         setupObservers()
     }
 

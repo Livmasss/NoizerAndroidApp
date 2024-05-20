@@ -17,6 +17,14 @@ internal class RemoteTrackInfoDataSource (
             emptyList()
     }
 
+    fun findTracks(query: String): List<TrackModel> {
+        val response = api.findTracksByQuery(query).execute()
+        return if (response.isSuccessful)
+            response.body()?.items ?: emptyList()
+        else
+            emptyList()
+    }
+
     private fun createApi(): RemoteTrackInfoApi =
         retrofit.create(RemoteTrackInfoApi::class.java)
 }
