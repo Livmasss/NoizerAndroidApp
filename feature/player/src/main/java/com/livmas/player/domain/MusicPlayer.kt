@@ -10,6 +10,7 @@ import com.google.common.util.concurrent.MoreExecutors
 import com.livmas.player.domain.usecases.GetMediaItemByUrlUseCase
 import com.livmas.ui.presentation.models.TrackModel
 import com.livmas.util.domain.usecases.GetTrackURLUseCase
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,6 +20,7 @@ internal class MusicPlayer(
     private val getMediaItemByUrlUseCase: GetMediaItemByUrlUseCase,
     private val getTrackURLUseCase: GetTrackURLUseCase,
     private val controllerFuture: ListenableFuture<MediaController>,
+    private val coroutineExceptionHandler: CoroutineExceptionHandler
 ) {
     fun playItemTracks(playlist: List<TrackModel>) =
         controllerFuture.addListener(
@@ -26,12 +28,12 @@ internal class MusicPlayer(
                 val player = controllerFuture.get()
                 player.repeatMode = Player.REPEAT_MODE_ALL
 
-                CoroutineScope(Dispatchers.IO).launch {
+                CoroutineScope(Dispatchers.IO).launch(coroutineExceptionHandler) {
                     playlist.forEach { track ->
                         val url = getTrackURLUseCase.execute(track.id) ?: return@forEach
                         val mediaItem = getMediaItemByUrlUseCase.execute(Uri.parse(url), track)
 
-                        CoroutineScope(Dispatchers.Main).launch {
+                        CoroutineScope(Dispatchers.Main).launch(coroutineExceptionHandler) {
                             player.apply {
                                 setMediaItem(mediaItem)
                                 prepare()

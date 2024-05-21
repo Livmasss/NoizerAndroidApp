@@ -14,6 +14,6 @@ val searchModule = module {
         GetInitialTracksUseCase(get())
     }
     viewModel<SearchViewModel> {
-        SearchViewModel(get(), get())
+        SearchViewModel(get(), get(), get())
     }
 }

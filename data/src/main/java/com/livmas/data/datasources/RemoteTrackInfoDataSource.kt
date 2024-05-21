@@ -3,21 +3,33 @@ package com.livmas.data.datasources
 import com.livmas.data.apis.RemoteTrackInfoApi
 import com.livmas.data.models.TrackModel
 import retrofit2.Retrofit
+import java.io.IOException
 
 internal class RemoteTrackInfoDataSource (
-    private val retrofit: Retrofit
+    private val retrofit: Retrofit?
 ) {
     private val api = createApi()
 
     fun getTracks(): List<TrackModel> {
-        val response = api.getTracksFeed().execute()
-        return if (response.isSuccessful)
-             response.body()?.items ?: emptyList()
-        else
-            emptyList()
+        if (api == null)
+            throw IOException()
+
+        return try {
+            val response = api.getTracksFeed().execute()
+            if (response.isSuccessful)
+                response.body()?.items ?: emptyList()
+            else
+                emptyList()
+        }
+        finally {
+            emptyList<TrackModel>()
+        }
     }
 
     fun findTracks(query: String): List<TrackModel> {
+        if (api == null)
+            throw IOException()
+
         val response = api.findTracksByQuery(query).execute()
         return if (response.isSuccessful)
             response.body()?.items ?: emptyList()
@@ -25,6 +37,6 @@ internal class RemoteTrackInfoDataSource (
             emptyList()
     }
 
-    private fun createApi(): RemoteTrackInfoApi =
-        retrofit.create(RemoteTrackInfoApi::class.java)
+    private fun createApi(): RemoteTrackInfoApi? =
+        retrofit?.create(RemoteTrackInfoApi::class.java)
 }

@@ -37,11 +37,16 @@ val dataModule = module {
             .addInterceptor(get<HttpLoggingInterceptor>())
             .build()
     }
-    single<Retrofit> {
-        Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.31.87:8080")
-            .client(get())
-            .build()
+    single<Retrofit?> {
+        try {
+            Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("http://192.168.1.6:8080")
+                .client(get())
+                .build()
+        }
+        catch (e: Exception) {
+            null
+        }
     }
 }

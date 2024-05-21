@@ -30,7 +30,7 @@ val playerModule = module {
     }
 
     single<MusicPlayer> {
-        MusicPlayer(get(), get(), get())
+        MusicPlayer(get(), get(), get(), get())
     }
 
     single {
