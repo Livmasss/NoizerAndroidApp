@@ -1,12 +1,12 @@
 @file:UnstableApi package com.livmas.data
 
 import androidx.media3.common.util.UnstableApi
-import com.livmas.data.datasources.RemoteTrackContentDataSource
+import com.livmas.data.datasources.RemoteMediaDataSource
 import com.livmas.data.datasources.RemoteTrackInfoDataSource
-import com.livmas.data.repositories.MediaItemRepositoryImpl
-import com.livmas.data.repositories.TrackRepositoryImpl
+import com.livmas.data.repositories.RemoteMediaItemRepositoryImpl
+import com.livmas.data.repositories.RemoteTrackRepositoryImpl
 import com.livmas.player.domain.repositories.MediaRepository
-import com.livmas.util.domain.repositories.TrackRepository
+import com.livmas.util.domain.repositories.TrackInfoRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -18,14 +18,14 @@ val dataModule = module {
         RemoteTrackInfoDataSource(get())
     }
     single {
-        RemoteTrackContentDataSource(get())
+        RemoteMediaDataSource(get())
     }
 
     single<MediaRepository> {
-        MediaItemRepositoryImpl(get())
+        RemoteMediaItemRepositoryImpl(get())
     }
-    single<TrackRepository> {
-        TrackRepositoryImpl(get(), get())
+    single<TrackInfoRepository> {
+        RemoteTrackRepositoryImpl(get(), get())
     }
 
     single<HttpLoggingInterceptor> {

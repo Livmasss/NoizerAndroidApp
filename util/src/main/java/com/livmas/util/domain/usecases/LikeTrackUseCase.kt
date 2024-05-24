@@ -1,8 +1,8 @@
 package com.livmas.util.domain.usecases
 
-import com.livmas.util.domain.repositories.TrackRepository
+import com.livmas.util.domain.repositories.TrackInfoRepository
 
-class LikeTrackUseCase(private val repository: TrackRepository) {
+class LikeTrackUseCase(private val repository: TrackInfoRepository) {
     fun execute(trackId: Long) =
         repository.setIsTrackLiked(trackId, true)
 }

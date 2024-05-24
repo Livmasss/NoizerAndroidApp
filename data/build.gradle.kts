@@ -42,6 +42,7 @@ dependencies {
     // Koin for Android
     val koinVersion = "3.5.0"
     implementation ("io.insert-koin:koin-android:$koinVersion")
+    testImplementation("io.insert-koin:koin-test-junit5:$koinVersion")
 
     // HTTP connection
     val retrofitVersion = "2.9.0"
@@ -57,6 +58,11 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
+
+    val mockkVersion = "1.13.3"
+    testImplementation("io.mockk:mockk-android:${mockkVersion}")
+    testImplementation("io.mockk:mockk-agent:${mockkVersion}")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

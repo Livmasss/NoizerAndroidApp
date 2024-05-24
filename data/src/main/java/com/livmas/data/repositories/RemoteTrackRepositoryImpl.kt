@@ -1,28 +1,28 @@
 package com.livmas.data.repositories
 
 import android.util.Log
-import com.livmas.data.datasources.RemoteTrackContentDataSource
+import com.livmas.data.datasources.RemoteMediaDataSource
 import com.livmas.data.datasources.RemoteTrackInfoDataSource
 import com.livmas.data.mappers.TrackMapper
 import com.livmas.util.domain.models.TrackDTO
-import com.livmas.util.domain.repositories.TrackRepository
+import com.livmas.util.domain.repositories.TrackInfoRepository
 
-internal class TrackRepositoryImpl(
-    private val remoteTrackInfoSource: RemoteTrackInfoDataSource,
-    private val remoteTrackContentSource: RemoteTrackContentDataSource
-): TrackRepository {
+internal class RemoteTrackRepositoryImpl(
+    private val remoteTrackInfoDataSource: RemoteTrackInfoDataSource,
+    private val remoteMediaDataSource: RemoteMediaDataSource
+): TrackInfoRepository {
     override fun getTracks(): List<TrackDTO> =
-        remoteTrackInfoSource.getTracks().map {
+        remoteTrackInfoDataSource.getTracks().map {
             TrackMapper.mapTrackToDTO(it)
         }
 
     override fun searchTracks(query: String): List<TrackDTO> =
-        remoteTrackInfoSource.findTracks(query).map {
+        remoteTrackInfoDataSource.findTracks(query).map {
             TrackMapper.mapTrackToDTO(it)
         }
 
     override fun getTrackURLById(id: Long): String {
-        return remoteTrackContentSource.getTrackURLById(id)
+        return remoteMediaDataSource.getTrackURLById(id)
     }
 
     override fun setIsTrackLiked(trackId: Long, likedState: Boolean) {

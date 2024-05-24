@@ -1,9 +1,9 @@
 package com.livmas.util.domain.usecases
 
 import com.livmas.util.domain.exceptions.TrackNotFoundException
-import com.livmas.util.domain.repositories.TrackRepository
+import com.livmas.util.domain.repositories.TrackInfoRepository
 
-class GetTrackURLUseCase(private val repository: TrackRepository) {
+class GetTrackURLUseCase(private val repository: TrackInfoRepository) {
     suspend fun execute(id: Long): String? {
         return try {
             repository.getTrackURLById(id)

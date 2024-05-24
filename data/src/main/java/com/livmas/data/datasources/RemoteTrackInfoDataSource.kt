@@ -1,6 +1,6 @@
 package com.livmas.data.datasources
 
-import com.livmas.data.apis.RemoteTrackInfoApi
+import com.livmas.data.apis.TrackInfoApi
 import com.livmas.data.models.TrackModel
 import retrofit2.Retrofit
 import java.io.IOException
@@ -37,6 +37,6 @@ internal class RemoteTrackInfoDataSource (
             emptyList()
     }
 
-    private fun createApi(): RemoteTrackInfoApi? =
-        retrofit?.create(RemoteTrackInfoApi::class.java)
+    private fun createApi(): TrackInfoApi? =
+        retrofit?.create(TrackInfoApi::class.java)
 }
